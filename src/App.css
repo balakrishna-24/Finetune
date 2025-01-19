@@ -427,7 +427,7 @@ textarea::-webkit-scrollbar-thumb:hover {
   border: 1px solid rgba(220, 38, 38, 0.3);
   color: #ef4444;
 }
-.editor-wrapper {
+/* .editor-wrapper {
   position: relative;
   width: 100%;
   border: 1px solid #4a4d7c;
@@ -435,10 +435,19 @@ textarea::-webkit-scrollbar-thumb:hover {
   background: #2d325a;
   overflow: hidden;
   display: flex;
-  max-height: 500px; /* Set a maximum height */
-}
+  max-height: 500px; 
+} */
+  /* Set a maximum height */
 
-.line-numbers {
+  .editor-wrapper {
+    display: flex;
+    position: relative;
+    border: 1px solid #4c5982;
+    border-radius: 4px;
+    background: #546689;
+    min-height: 200px;
+  }
+/* .line-numbers {
   position: sticky;
   left: 0;
   top: 0;
@@ -449,6 +458,17 @@ textarea::-webkit-scrollbar-thumb:hover {
   overflow: hidden;
   z-index: 2;
   height: 100%;
+} */
+
+.line-numbers {
+  display: flex;
+  flex-direction: column;
+  padding: 10px 8px;
+  background-color: #524949;
+  border-right: 1px solid #3b3535;
+  user-select: none;
+  overflow: hidden;
+  min-width: 40px;
 }
 
 .line-numbers-content {
@@ -456,7 +476,7 @@ textarea::-webkit-scrollbar-thumb:hover {
   overflow: hidden;
 }
 
-.line-number {
+/* .line-number {
   padding: 0 10px;
   color: #8892b0;
   font-size: 14px;
@@ -465,6 +485,17 @@ textarea::-webkit-scrollbar-thumb:hover {
   text-align: right;
   height: 21px;
   white-space: nowrap;
+} */
+
+.line-number {
+  font-family: monospace;
+  color: #999;
+  font-size: 14px;
+  height: 21px; /* Match the line height of text editor */
+  line-height: 21px; /* Exact match with text editor */
+  text-align: right;
+  padding-right: 5px;
+  box-sizing: border-box;
 }
 
 .editor-content {
@@ -486,6 +517,11 @@ textarea::-webkit-scrollbar-thumb:hover {
   resize: none;
   white-space: pre;
   overflow: visible;
+}
+
+.text-editor, .line-numbers {
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 /* Scrollbar styling */
