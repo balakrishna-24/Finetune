@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './App.css';
 
 function App() {
@@ -8,6 +9,8 @@ function App() {
   const [isSystemMessageOpen, setIsSystemMessageOpen] = useState(false);
   const [systemMessage, setSystemMessage] = useState('');
   const [error, setError] = useState('');
+  const navigate = useNavigate();
+  
 
   // Handle format change
   const handleFormatChange = (newFormat) => {
@@ -17,15 +20,15 @@ function App() {
     setError('');
   };
 
-  // Handle system message changes - independently managed
+  // Handle system message changes
   const handleSystemMessageChange = (e) => {
     setSystemMessage(e.target.value);
   };
 
-  // Handle input text changes - independently managed
+  // Handle input text changes
   const handleInputTextChange = (e) => {
     const newText = e.target.value;
-    if (newText.split('\n').length <= 5000) {
+    if (newText.split('\n').length <= 10000) {
       setInputText(newText);
     }
   };
@@ -130,14 +133,15 @@ function App() {
 
   return (
     <div className="App">
-      <h1 className="main-title">Text to JSONL Converter </h1>
-      <p className="subtitle">for AI Finetuning</p>
-      
+      <div className="title-section">
+        <h1 className="main-title">Text to JSONL Converter</h1>
+        <p className="subtitle">for AI Training</p>
+      </div>
       {/* Ad Space */}
       <div className="ad-space">
-        {/* Ad content goes here */}
+      {/* Ad content goes here */}
       </div>
-
+      
       <div className="format-selector">
         <button 
           className={`format-button ${format === 'single' ? 'active' : ''}`}
@@ -176,7 +180,7 @@ function App() {
 
           <label>
             Text Editor 
-            <span className="line-count">{lineCount}/5000 lines</span>
+            <span className="line-count">{lineCount}/10000 lines</span>
           </label>
           <textarea
             value={inputText}
@@ -232,16 +236,59 @@ Assistant response`}
             spellCheck="false"
           />
         </div>
+      </div>
 
-        <div className="instructions">
-          <p>
-            📝 {format === 'single' ? 
-              "Enter pairs of messages (user message followed by assistant response). Separate different pairs with blank lines." :
-              "Enter multi-turn conversations. Separate exchanges with double newlines and different conversations with triple newlines."}
-            {isSystemMessageOpen ? 
-              " System message will be included in each conversation." : 
-              " Enable System Message to add a system prompt to each conversation."}
-          </p>
+      {/* Instructions and Other Tools Section */}
+      <div className="bottom-section">
+        <div className="instructions-section">
+          <h2>Instructions</h2>
+          <div className="instruction-steps">
+            <div className="step">
+              <h3>1. Choose Format</h3>
+              <p>Select Single Chat for simple Q&A pairs or Multi Chat for conversations with multiple exchanges.</p>
+            </div>
+            <div className="step">
+              <h3>2. Enter System Message (Optional)</h3>
+              <p>Click on System Message to add context for your AI model.</p>
+            </div>
+            <div className="step">
+              <h3>3. Input Your Text</h3>
+              <p>For Single Chat: Enter pairs of messages separated by blank lines.</p>
+              <p>For Multi Chat: Enter conversations separated by triple newlines.</p>
+            </div>
+            <div className="step">
+              <h3>4. Convert and Download</h3>
+              <p>Click Convert to JSONL and use the Download button to save your file.</p>
+            </div>
+          </div>
+        </div>
+
+        <div className="other-tools-section">
+          <h2>Other Tools</h2>
+          <div className="tools-list">
+            <div className="tool-item">
+              <h3>JSON to JSONL Converter</h3>
+              <p>Convert JSON arrays to JSONL format.</p>
+              <button className="tool-link"  onClick={() => {navigate('/json-converter'); window.scrollTo(0, 0);}} >
+              
+              Try now</button>
+            </div>
+            {/* <div className="tool-item">
+              <h3>JSON Validator</h3>
+              <p>Validate and format your JSON data.</p>
+              <button className="tool-link">Coming Soon</button>
+            </div> */}
+            <div className="tool-item">
+               <h3>JSON Validator</h3>
+               <p>Validate and format your JSON data.</p>
+               <button 
+               className="tool-link"
+               onClick={() => navigate('/json-validator')}
+              >
+                Try Now
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     </div>

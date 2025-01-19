@@ -1,4 +1,26 @@
 /* Base styles */
+/* Disable text selection */
+.main-title,
+.subtitle,
+.format-button,
+.link-button,
+.system-message-toggle,
+button,
+h1, h2, h3, h4, h5, h6,
+label {
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+
+/* Keep text selection in textareas */
+textarea {
+  user-select: text;
+  -webkit-user-select: text;
+  -moz-user-select: text;
+  -ms-user-select: text;
+}
 body {
   margin: 0;
   padding: 0;
@@ -229,4 +251,259 @@ textarea::-webkit-scrollbar-thumb {
 
 textarea::-webkit-scrollbar-thumb:hover {
   background: #6366f1;
+}
+
+.bottom-section {
+  display: flex;
+  gap: 40px;
+  margin-top: 40px;
+  padding: 20px;
+}
+
+.instructions-section,
+.other-tools-section {
+  flex: 1;
+  background-color: #1a1f2e;
+  border-radius: 10px;
+  padding: 20px;
+}
+
+.instructions-section h2,
+.other-tools-section h2 {
+  color: white;
+  margin-bottom: 20px;
+  font-size: 1.5rem;
+}
+
+.step {
+  margin-bottom: 20px;
+}
+
+.step h3 {
+  color: #6366f1;
+  margin-bottom: 8px;
+  font-size: 1.1rem;
+}
+
+.step p {
+  color: #a8b2d1;
+  line-height: 1.5;
+}
+
+.tools-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.tool-item {
+  padding: 15px;
+  background-color: #242842;
+  border-radius: 8px;
+}
+
+.tool-item h3 {
+  color: #6366f1;
+  margin-bottom: 8px;
+}
+
+.tool-item p {
+  color: #a8b2d1;
+  margin-bottom: 12px;
+}
+
+.tool-link {
+  background-color: #4f46e5;
+  color: white;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.tool-link:hover {
+  background-color: #4338ca;
+}
+
+
+.back-button {
+  margin-top: 20px;
+  padding: 8px 16px;
+  background-color: #4f46e5;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.back-button:hover {
+  background-color: #4338ca;
+}
+/* .how-it-works-section {
+  margin: 50px 0;
+  padding: 20px;
+  text-align: center;
+}
+
+.video-container {
+  max-width: 800px;
+  margin: 20px auto;
+  background-color: #1a1f2e;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.tutorial-video {
+  width: 100%;
+  border-radius: 5px;
+  background-color: #000;
+}
+
+.link-button {
+  background: none;
+  border: none;
+  color: #6366f1;
+  cursor: pointer;
+  font-size: 1rem;
+  padding: 5px 10px;
+  text-decoration: underline;
+  transition: color 0.2s;
+}
+
+.link-button:hover {
+  color: #818cf8;
+} */
+
+/* Position back button at top right */
+.back-button {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  padding: 10px 20px;
+  background-color: #4f46e5;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.back-button:hover {
+  background-color: #4338ca;
+}
+
+/* Ad space styling */
+.ad-space {
+  min-height: 100px;  /* Adjust height as needed */
+  margin: 40px 0;     /* Space above and below */
+  width: 100%;
+  border: 1px dashed rgba(255, 255, 255, 0.1); /* Optional: to visualize the space */
+}
+
+/* Adjust main container to handle absolute positioned button */
+.App {
+  position: relative;
+  padding-top: 60px; /* Make space for the back button */
+}
+
+.validation-message {
+  padding: 12px;
+  border-radius: 6px;
+  margin: 10px 0;
+  font-size: 14px;
+}
+
+.validation-message.success {
+  background-color: rgba(34, 197, 94, 0.1);
+  border: 1px solid rgba(34, 197, 94, 0.3);
+  color: #22c55e;
+}
+
+.validation-message.error {
+  background-color: rgba(220, 38, 38, 0.1);
+  border: 1px solid rgba(220, 38, 38, 0.3);
+  color: #ef4444;
+}
+.editor-wrapper {
+  position: relative;
+  width: 100%;
+  border: 1px solid #4a4d7c;
+  border-radius: 8px;
+  background: #2d325a;
+  overflow: hidden;
+  display: flex;
+  max-height: 500px; /* Set a maximum height */
+}
+
+.line-numbers {
+  position: sticky;
+  left: 0;
+  top: 0;
+  background: #252842;
+  border-right: 1px solid #4a4d7c;
+  min-width: 50px;
+  max-width: 50px;
+  overflow: hidden;
+  z-index: 2;
+  height: 100%;
+}
+
+.line-numbers-content {
+  padding: 15px 0;
+  overflow: hidden;
+}
+
+.line-number {
+  padding: 0 10px;
+  color: #8892b0;
+  font-size: 14px;
+  line-height: 21px;
+  font-family: monospace;
+  text-align: right;
+  height: 21px;
+  white-space: nowrap;
+}
+
+.editor-content {
+  flex: 1;
+  overflow: auto;
+  position: relative;
+}
+
+.text-editor {
+  width: 100%;
+  min-height: 100%;
+  padding: 15px;
+  font-family: monospace;
+  font-size: 14px;
+  line-height: 21px;
+  color: #fff;
+  background: transparent;
+  border: none;
+  resize: none;
+  white-space: pre;
+  overflow: visible;
+}
+
+/* Scrollbar styling */
+.editor-content::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+.editor-content::-webkit-scrollbar-track {
+  background: #1e2633;
+}
+
+.editor-content::-webkit-scrollbar-thumb {
+  background: #4a4d7c;
+  border-radius: 6px;
+  border: 3px solid #1e2633;
+}
+
+.editor-content::-webkit-scrollbar-corner {
+  background: #1e2633;
 }
