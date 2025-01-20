@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import './App.css';
 
 function App() {
@@ -10,7 +10,6 @@ function App() {
   const [systemMessage, setSystemMessage] = useState('');
   const [error, setError] = useState('');
   const navigate = useNavigate();
-  
 
   // Handle format change
   const handleFormatChange = (newFormat) => {
@@ -137,11 +136,7 @@ function App() {
         <h1 className="main-title">Text to JSONL Converter</h1>
         <p className="subtitle">for AI Training</p>
       </div>
-      {/* Ad Space */}
-      <div className="ad-space">
-      {/* Ad content goes here */}
-      </div>
-      
+
       <div className="format-selector">
         <button 
           className={`format-button ${format === 'single' ? 'active' : ''}`}
@@ -238,7 +233,6 @@ Assistant response`}
         </div>
       </div>
 
-      {/* Instructions and Other Tools Section */}
       <div className="bottom-section">
         <div className="instructions-section">
           <h2>Instructions</h2>
@@ -269,25 +263,38 @@ Assistant response`}
             <div className="tool-item">
               <h3>JSON to JSONL Converter</h3>
               <p>Convert JSON arrays to JSONL format.</p>
-              <button className="tool-link"  onClick={() => {navigate('/json-converter'); window.scrollTo(0, 0);}} >
-              
-              Try now</button>
+              <button 
+                className="tool-link" 
+                onClick={() => {
+                  navigate('/json-converter');
+                  window.scrollTo(0, 0);
+                }}
+              >
+                Try now
+              </button>
             </div>
-            {/* <div className="tool-item">
+            <div className="tool-item">
               <h3>JSON Validator</h3>
               <p>Validate and format your JSON data.</p>
-              <button className="tool-link">Coming Soon</button>
-            </div> */}
-            <div className="tool-item">
-               <h3>JSON Validator</h3>
-               <p>Validate and format your JSON data.</p>
-               <button 
-               className="tool-link"
-               onClick={() => navigate('/json-validator')}
+              <button 
+                className="tool-link"
+                onClick={() => navigate('/json-validator')}
               >
                 Try Now
               </button>
             </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Footer Links */}
+      <div className="footer-links">
+        <div className="footer-content">
+          <span className="copyright">© 2025 JSONLint.com</span>
+          <div className="links">
+            <Link to="/how-it-works" className="footer-link">How It Works</Link>
+            <span className="separator">•</span>
+            <Link to="/privacy-policy" className="footer-link">Privacy Policy</Link>
           </div>
         </div>
       </div>

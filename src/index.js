@@ -16,6 +16,8 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import App from './main';
 import JsonConvertor from './JsonConvertor';
 import JsonValidator from './JsonValidator';
+import PrivacyPolicy from './PrivacyPolicy';
+import HowItWorks from './HowItWorks';
 import './index.css';
 
 
@@ -25,6 +27,8 @@ root.render(
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<App />} />
+        <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+        <Route path="/how-it-works" element={<HowItWorks />} />
         <Route path="/json-converter" element={<JsonConvertor />} />
         <Route path="/json-validator" element={<JsonValidator />} />
       </Routes>
